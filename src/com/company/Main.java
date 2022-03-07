@@ -10,8 +10,6 @@ public class Main {
 
     public static void main(String[] args) {
 	// write your code here
-        System.out.println("privet");
-
         ArrayList<Vocabulary> vocabularies = new ArrayList<Vocabulary>();
         vocabularies.add(new Vocabulary("Tisch", "table"));
         vocabularies.add(new Vocabulary("Apfel", "apple"));
@@ -39,6 +37,7 @@ public class Main {
             fis = new FileInputStream(filename);
             in = new ObjectInputStream(fis);
             vocabularies = (ArrayList<Vocabulary>) in.readObject();
+            System.out.println(vocabularies);
             in.close();
         } catch (Exception ex) {
             ex.printStackTrace();
