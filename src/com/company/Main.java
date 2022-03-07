@@ -10,10 +10,12 @@ public class Main {
 
     public static void main(String[] args) {
 	// write your code here
-        ArrayList<Vocabulary> vocabularies = new ArrayList<Vocabulary>();
-        vocabularies.add(new Vocabulary("Tisch", "table"));
-        vocabularies.add(new Vocabulary("Apfel", "apple"));
-        vocabularies.add(new Vocabulary("Hund", "dog"));
+
+        VocabularyList vocabularyList = new VocabularyList();
+
+        vocabularyList.addVocabulary(new Vocabulary("Tisch", "table"));
+        vocabularyList.addVocabulary(new Vocabulary("Apfel", "apple"));
+        vocabularyList.addVocabulary(new Vocabulary("Hund", "dog"));
 
         String filename = "vocabularies.ser";
 
@@ -23,7 +25,7 @@ public class Main {
         try {
             fos = new FileOutputStream(filename);
             out = new ObjectOutputStream(fos);
-            out.writeObject(vocabularies);
+            out.writeObject(vocabularyList);
 
             out.close();
         } catch (Exception ex) {
@@ -36,8 +38,8 @@ public class Main {
         try {
             fis = new FileInputStream(filename);
             in = new ObjectInputStream(fis);
-            vocabularies = (ArrayList<Vocabulary>) in.readObject();
-            System.out.println(vocabularies);
+            vocabularyList = (VocabularyList) in.readObject();
+            System.out.println(vocabularyList);
             in.close();
         } catch (Exception ex) {
             ex.printStackTrace();
