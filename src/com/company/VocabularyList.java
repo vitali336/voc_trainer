@@ -10,6 +10,8 @@ public class VocabularyList implements Serializable {
     public void addVocabulary(Vocabulary vocabulary){
         this.vocabularies.add(vocabulary);
     }
+    public void removeVocabulary(Vocabulary vocabulary) {this.vocabularies.remove(vocabulary);}
+    public boolean containsVocabulary(Vocabulary vocabulary) {return this.vocabularies.contains(vocabulary);}
 
     @Override
     public String toString() {

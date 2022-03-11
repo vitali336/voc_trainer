@@ -15,9 +15,8 @@ public class Main {
             in.close();
             return vocabularyList;
         } catch (Exception ex) {
-            ex.printStackTrace();
+            return new VocabularyList();
         }
-        return null;
     }
 
     public static void writeList(String filename, VocabularyList vocabularyList){
@@ -49,7 +48,8 @@ public class Main {
             vocabularyList = readList(filename);
 
             System.out.print("Show Vocabulary-List (1) " + '\n'
-                + "Add Vocabulary (2)" + '\n');
+                    + "Add Vocabulary (2)" + '\n'
+                    + "Remove Vocabulary (3)" + '\n');
             try{
                 input = in_.readLine();
             }catch (Exception e){
@@ -71,6 +71,21 @@ public class Main {
                 }
 
                 vocabularyList.addVocabulary(new Vocabulary(input_de, input_en));
+                writeList(filename, vocabularyList);
+
+            }else if(input.equals("3")){
+
+                try{
+                    System.out.print("Deutsch: ");
+                    input_de = in_.readLine();
+                    System.out.print("Englisch: ");
+                    input_en = in_.readLine();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+                Vocabulary toRemove = new Vocabulary(input_de, input_en);
+                vocabularyList.removeVocabulary(toRemove);
+
                 writeList(filename, vocabularyList);
             }
 
